@@ -1,0 +1,432 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #0a0a2a 0%, #000013 100%);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 100vh;
+}
+
+header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+  background: rgba(5, 15, 40, 0.7);
+  padding: 15px 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+header:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  background: linear-gradient(45deg, #4fc3f7, #64dd17);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#info-panel {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) translateX(20px);
+  width: 320px;
+  background: rgba(5, 15, 40, 0.85);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#info-panel.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+#country-flag {
+  width: 80px;
+  height: 50px;
+  background: #1a1a40;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+#country-flag:hover {
+  transform: scale(1.05);
+}
+
+.panel-content h2 {
+  color: #4fc3f7;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+#country-info {
+  margin: 15px 0;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.country-detail {
+  background: rgba(30, 60, 120, 0.3);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #4fc3f7;
+  transition: all 0.3s ease;
+}
+
+.country-detail:hover {
+  transform: translateX(5px);
+  box-shadow: 5px 0 15px rgba(79, 195, 247, 0.3);
+}
+
+.country-detail h3 {
+  color: #64dd17;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stat {
+  flex: 1;
+  background: rgba(30, 60, 120, 0.3);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4fc3f7;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.stat:hover .stat-value {
+  color: #64dd17;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.stat:hover .stat-label {
+  opacity: 1;
+}
+
+#close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg) scale(1.1);
+}
+
+#instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(5, 15, 40, 0.7);
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+#instructions:hover {
+  background: rgba(5, 15, 40, 0.8);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+#country-list {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(5, 15, 40, 0.7);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  max-width: 250px;
+  transition: all 0.3s ease;
+}
+
+#country-list:hover {
+  background: rgba(5, 15, 40, 0.8);
+  transform: translateY(-2px);
+}
+
+#country-list h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #4fc3f7;
+  transition: color 0.3s ease;
+}
+
+#country-list:hover h3 {
+  color: #64dd17;
+}
+
+#countries-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.country-chip {
+  background: rgba(30, 60, 120, 0.5);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.country-chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.country-chip:hover::before {
+  left: 100%;
+}
+
+.country-chip:hover {
+  background: rgba(50, 100, 200, 0.7);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.country-chip.highlighted {
+  background: rgba(79, 195, 247, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.country-highlight {
+  position: absolute;
+  background: radial-gradient(circle, rgba(79, 195, 247, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  transition: all 0.3s ease-out;
+}
+
+.glow {
+  box-shadow: 0 0 20px 5px rgba(79, 195, 247, 0.7);
+}
+
+/* Efectos de carga */
+@keyframes pulse {
+  0% { 
+    opacity: 0.5;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.8);
+  }
+  100% { 
+    opacity: 0.5;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease;
+}
+
+.loading-content {
+  text-align: center;
+  background: rgba(5, 15, 40, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(79, 195, 247, 0.3);
+  border-radius: 50%;
+  border-top-color: #4fc3f7;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+.loading-overlay p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #4fc3f7;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Efectos de transición para elementos de la interfaz */
+.country-detail, .stat, #instructions, #country-list {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  header {
+    top: 10px;
+    left: 10px;
+    padding: 10px 15px;
+    max-width: calc(100% - 20px);
+  }
+  
+  header h1 {
+    font-size: 1.4rem;
+  }
+  
+  #info-panel {
+    width: 280px;
+    right: 10px;
+    padding: 20px;
+  }
+  
+  #country-list {
+    left: 10px;
+    bottom: 10px;
+    max-width: 200px;
+  }
+  
+  #instructions {
+    bottom: 10px;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Scroll personalizado para el panel de información */
+#country-info::-webkit-scrollbar {
+  width: 6px;
+}
+
+#country-info::-webkit-scrollbar-track {
+  background: rgba(30, 60, 120, 0.2);
+  border-radius: 3px;
+}
+
+#country-info::-webkit-scrollbar-thumb {
+  background: rgba(79, 195, 247, 0.5);
+  border-radius: 3px;
+}
+
+#country-info::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 195, 247, 0.7);
+}
