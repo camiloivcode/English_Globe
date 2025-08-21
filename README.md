@@ -103,7 +103,8 @@ Método de Despliegue: Conexión directa con GitHub
 Configuración: No requiere comando de build
 
 👨‍💻 Autor
-Harold - Perfil de GitHub
+Camilo_Iriarte - camiloivcode
+yenifer_padilla - git hub
 
 📄 Licencia
 Este proyecto fue creado con fines educativos para un concurso de clase de inglés.
