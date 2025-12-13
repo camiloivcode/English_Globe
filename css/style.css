@@ -1,3 +1,50 @@
+/* Mouseketools box: esquina inferior derecha para no tapar lista */
+/* Mouseketools box: entre header y lista de países */
+#mouseketools-box {
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  min-width: 220px;
+  max-width: 320px;
+  background: rgba(30, 40, 80, 0.92);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  padding: 18px 22px 14px 22px;
+  z-index: 101;
+  font-size: 1.05rem;
+  border: 1.5px solid #4fc3f7;
+  display: none;
+  transition: opacity 0.3s;
+}
+  min-width: 220px;
+  max-width: 320px;
+  background: rgba(30, 40, 80, 0.92);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  padding: 18px 22px 14px 22px;
+  z-index: 100;
+  font-size: 1.05rem;
+  border: 1.5px solid #4fc3f7;
+  display: none;
+  transition: opacity 0.3s;
+}
+#mouseketools-box h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4fc3f7;
+}
+#mouseketools-box ul, #mouseketools-box li {
+  margin: 0;
+  padding: 0;
+  list-style: disc inside;
+}
+#mouseketools-box li {
+  margin-bottom: 3px;
+  font-size: 1rem;
+}
 * {
   margin: 0;
   padding: 0;
@@ -429,4 +476,16 @@ header p {
 
 #country-info::-webkit-scrollbar-thumb:hover {
   background: rgba(79, 195, 247, 0.7);
+}
+
+/* Mousetools box visible/hidden */
+#mousetools-box {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#mousetools-box.visible {
+  opacity: 1;
+  visibility: visible;
 }

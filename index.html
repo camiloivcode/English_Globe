@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🌍 El mejor proyecto para el concurso de harold</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/games.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 </head>
 <body>
+
   <header>
     <h1>English Speaking World</h1>
     <p>Explore countries where English is widely spoken</p>
+    <div class="game-buttons">
+      <button onclick="GameSystem.startMemoryGame()" class="game-btn">🃏 Memory Game</button>
+    </div>
   </header>
 
   <div id="container"></div>
@@ -37,8 +42,17 @@
     <button id="close-btn">×</button>
   </div>
 
+
   <div id="instructions">
     <p>Drag to rotate the globe • Hover over highlighted countries</p>
+  </div>
+
+
+
+  <!-- Mouseketools slang box (alineado a la izquierda, debajo del header) -->
+  <div id="mouseketools-box" style="display:none;">
+    <h4>Mouseketools 🇬🇧</h4>
+    <div id="slang-list"></div>
   </div>
 
   <div id="country-list">
@@ -46,11 +60,15 @@
     <div id="countries-container"></div>
   </div>
 
+  <!-- Modal para juegos -->
+  <div id="game-modal" style="display:none;"></div>
+
   <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
 
   <!-- Tu script -->
   <script src="js/main.js"></script>
+  <script src="js/games.js"></script>
 </body>
 </html>
