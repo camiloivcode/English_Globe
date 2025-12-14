@@ -1,121 +1,6 @@
-// Almacenar datos de países (completo, fusionado con slangs)
-window.englishSpeakingCountries = [
-  {
-    name: "United States",
-    capital: "Washington D.C.",
-    coordinates: { lat: 37.0902, lng: -95.7129 },
-    info: "English is the de facto national language, with about 80% of the population speaking it at home.",
-    fact: "The United States doesn't have an official language at the federal level.",
-    population: "331M",
-    speakers: "79%",
-    flag: "🇺🇸",
-    color: 0xff3366,
-    slang: ["What's up!", "You're awesome!", "My bad"]
-  },
-  {
-    name: "United Kingdom",
-    capital: "London",
-    coordinates: { lat: 55.3781, lng: -3.4360 },
-    info: "English originated in England and spread around the world through British colonization.",
-    fact: "The UK has the highest number of English speakers in Europe.",
-    population: "67M",
-    speakers: "98%",
-    flag: "🇬🇧",
-    color: 0x3366ff,
-    slang: ["Brilliant!", "Cheers", "Mate"]
-  },
-  {
-    name: "Canada",
-    capital: "Ottawa",
-    coordinates: { lat: 56.1304, lng: -106.3468 },
-    info: "English is one of Canada's two official languages, with about 56% of the population speaking it as their first language.",
-    fact: "Canadian English has influences from both British and American English.",
-    population: "38M",
-    speakers: "86%",
-    flag: "🇨🇦",
-    color: 0xff3333,
-    slang: ["Eh?", "Loonie", "Toque"]
-  },
-  {
-    name: "Australia",
-    capital: "Canberra",
-    coordinates: { lat: -25.2744, lng: 133.7751 },
-    info: "English is the main language spoken in Australia, with a distinctive accent and vocabulary.",
-    fact: "Australian English has unique abbreviations like 'arvo' for afternoon and 'barbie' for barbecue.",
-    population: "25M",
-    speakers: "97%",
-    flag: "🇦🇺",
-    color: 0x003366,
-    slang: ["G'day!", "No worries", "Arvo"]
-  },
-  {
-    name: "India",
-    capital: "New Delhi",
-    coordinates: { lat: 20.5937, lng: 78.9629 },
-    info: "English is an official language in India used in government, business, and education.",
-    fact: "India has the second-largest English-speaking population in the world after the United States.",
-    population: "1.38B",
-    speakers: "12%",
-    flag: "🇮🇳",
-    color: 0xff9933,
-    slang: ["Prepone", "Timepass", "Yaar"]
-  },
-  {
-    name: "South Africa",
-    capital: "Pretoria, Cape Town, Bloemfontein",
-    coordinates: { lat: -30.5595, lng: 22.9375 },
-    info: "English is one of 11 official languages and is commonly used in public and commercial life.",
-    fact: "South African English incorporates words from Afrikaans and indigenous languages.",
-    population: "60M",
-    speakers: "31%",
-    flag: "🇿🇦",
-    color: 0x007749,
-    slang: ["Howzit?", "Lekker", "Bra"]
-  },
-  {
-    name: "Ireland",
-    capital: "Dublin",
-    coordinates: { lat: 53.1424, lng: -7.6921 },
-    info: "English is the predominant language, though Irish (Gaelic) is also an official language.",
-    fact: "Hiberno-English, the dialect spoken in Ireland, has been influenced by Irish grammar and syntax.",
-    population: "5M",
-    speakers: "99%",
-    flag: "🇮🇪",
-    color: 0x169b62,
-    slang: ["Grand", "Craic", "Eejit"]
-  },
-  {
-    name: "New Zealand",
-    capital: "Wellington",
-    coordinates: { lat: -40.9006, lng: 174.8860 },
-    info: "English is the primary language, with a distinctive accent and Māori influences.",
-    fact: "New Zealand English includes many Māori words like 'kiwi' and 'mana'.",
-    population: "5M",
-    speakers: "96%",
-    flag: "🇳🇿",
-    color: 0x000000,
-    slang: ["Sweet as", "Chur", "Bro"]
-  }
-];
+// Main Entry Point
+// 3D Globe Setup
 
-// Mostrar Mouseketools (slang típico)
-function showMousetools(country) {
-  const box = document.getElementById('mouseketools-box');
-  const slangList = document.getElementById('slang-list');
-  if (!country || !country.slang) {
-    box.style.display = 'none';
-    slangList.innerHTML = '';
-    return;
-  }
-  box.style.display = 'block';
-  box.querySelector('h4').textContent = `Mouseketools (${country.name})`;
-  slangList.innerHTML = country.slang.map(s => `<li>${s}</li>`).join('');
-}
-
-// Ejemplo de integración: mostrar Mouseketools al seleccionar país
-// Llama showMousetools(country) cuando el usuario selecciona un país
-// Por ejemplo:
-// showMousetools(window.englishSpeakingCountries[0]);
 
 // Escena
 const scene = new THREE.Scene();
@@ -208,6 +93,31 @@ const material = new THREE.MeshPhongMaterial({
 
 const earth = new THREE.Mesh(geometry, material);
 scene.add(earth);
+
+// Mostrar Mouseketools (slang típico) - Definición
+function showMousetools(country) {
+  const box = document.getElementById('mouseketools-box');
+  const slangList = document.getElementById('slang-list');
+  if (!country || !country.slang) {
+    box.style.display = 'none';
+    slangList.innerHTML = '';
+    return;
+  }
+
+  // Animation for appearance
+  box.style.display = 'block';
+  box.style.opacity = '0';
+  box.style.transform = 'translateY(10px)';
+
+  gsap.to(box, {
+    opacity: 1,
+    y: 0,
+    duration: 0.3
+  });
+
+  box.querySelector('h4').textContent = `Mouseketools 🇬🇧 (${country.name})`;
+  slangList.innerHTML = country.slang.map(s => `<li>${s}</li>`).join('');
+}
 
 // Almacenar datos de países (completo, fusionado con slangs)
 window.englishSpeakingCountries = [

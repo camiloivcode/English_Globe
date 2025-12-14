@@ -2,33 +2,20 @@
 /* Mouseketools box: entre header y lista de países */
 #mouseketools-box {
   position: absolute;
-  top: 110px;
-  left: 40px;
-  min-width: 220px;
-  max-width: 320px;
-  background: rgba(30, 40, 80, 0.92);
+  top: 140px; /* Bajar un poco para no chocar con header */
+  left: 20px;
+  min-width: 200px;
+  max-width: 300px;
+  background: rgba(30, 40, 80, 0.95);
   color: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
-  padding: 18px 22px 14px 22px;
-  z-index: 101;
-  font-size: 1.05rem;
-  border: 1.5px solid #4fc3f7;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.3);
+  padding: 15px 20px;
+  z-index: 90; /* Menor que modales */
+  font-size: 0.95rem;
+  border: 1px solid #4fc3f7;
   display: none;
-  transition: opacity 0.3s;
-}
-  min-width: 220px;
-  max-width: 320px;
-  background: rgba(30, 40, 80, 0.92);
-  color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
-  padding: 18px 22px 14px 22px;
-  z-index: 100;
-  font-size: 1.05rem;
-  border: 1.5px solid #4fc3f7;
-  display: none;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 #mouseketools-box h4 {
   margin: 0 0 8px 0;
